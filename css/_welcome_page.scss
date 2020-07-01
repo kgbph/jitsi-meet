@@ -69,7 +69,7 @@ body.welcome-page {
                 width: 100%;
                 padding: $welcomePageEnterRoomInputContainerPadding;
                 text-align: left;
-                color: #253858;
+                color: #5C5C5C;
                 height: fit-content;
 
                 .enter-room-title {
@@ -117,7 +117,7 @@ body.welcome-page {
             text-align: left;
             min-height: 354px;
             width: 710px;
-            background: #75A7E7;
+            background: #2C2C2C;
             display: $welcomePageTabContainerDisplay;
             flex-direction: column;
 
@@ -169,7 +169,7 @@ body.welcome-page {
         height: $welcomePageButtonHeight;
         font-size: $welcomePageButtonFontSize;
         font-weight: $welcomePageButtonFontWeight;
-        background: #0074E0;
+        background: #EE2D3D;
         border-radius: $welcomePageButtonBorderRadius;
         color: #FFFFFF;
         text-align: center;

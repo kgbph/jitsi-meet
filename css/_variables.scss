@@ -37,7 +37,7 @@ $presence-idle: rgb(172, 172, 172);
 /**
  * Toolbar
  */
-$newToolbarBackgroundColor: rgba(22, 38, 55, 0.8);
+$newToolbarBackgroundColor: rgba(55, 55, 55, 0.8);
 $newToolbarButtonHoverColor: rgba(255, 255, 255, 0.15);
 $newToolbarButtonToggleColor: rgba(255, 255, 255, 0.2);
 $AOTToolbarButtonHoverColor: rgba(14, 20, 35, 0.6);
@@ -90,11 +90,11 @@ $modalTextColor: #333;
  * Chat
  */
 $chatActionsSeparatorColor: rgb(173, 105, 112);
-$chatHeaderBackgroundColor: rgba(42, 58, 75, 0.9);
+$chatHeaderBackgroundColor: rgba(42, 42, 42, 0.9);
 $chatInputSeparatorColor: #A4B8D1;
-$chatLocalMessageBackgroundColor: rgb(4, 98, 178);
-$chatPrivateMessageBackgroundColor: rgb(153, 69, 77);
-$chatRemoteMessageBackgroundColor:  rgb(86, 101, 114);
+$chatLocalMessageBackgroundColor: #2C2C2C;
+$chatPrivateMessageBackgroundColor: #000000;
+$chatRemoteMessageBackgroundColor:  #B30015;
 $sidebarWidth: 375px;
 
  /**
@@ -169,7 +169,7 @@ $watermarkHeight: 74px;
  */
 $welcomePageDescriptionColor: #fff;
 $welcomePageFontFamily: inherit;
-$welcomePageBackground: linear-gradient(-90deg, #1251AE 0%, #0074FF 50%, #1251AE 100%);
+$welcomePageBackground: linear-gradient(-90deg, #000000 0%, #EE2D3D 50%, #000000 100%);
 $welcomePageTitleColor: #fff;
 
 $welcomePageHeaderBackground: none;
