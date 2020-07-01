@@ -101,8 +101,14 @@ const config = {
             // to be available in such a form by multiple jitsi-meet
             // dependencies including lib-jitsi-meet.
 
-            loader: 'expose-loader?$!expose-loader?jQuery',
-            test: require.resolve('jquery')
+            test: require.resolve('jquery'),
+            use: [{
+                loader: 'expose-loader',
+                options: 'jQuery'
+            }, {
+                loader: 'expose-loader',
+                options: '$'
+            }]
         }, {
             // Allow CSS to be imported into JavaScript.
 
@@ -166,9 +172,6 @@ const config = {
             })
     ].filter(Boolean),
     resolve: {
-        alias: {
-            jquery: `jquery/dist/jquery${minimize ? '.min' : ''}.js`
-        },
         aliasFields: [
             'browser'
         ],
