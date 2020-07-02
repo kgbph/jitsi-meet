@@ -22,9 +22,9 @@ type Props = AbstractButtonProps & {
 class BeerChatDialogButton extends AbstractButton<Props, *> {
     accessibilityLabel = 'toolbar.accessibilityLabel.security';
     icon = IconBeer;
-    label = 'toolbar.security';
+    label = 'chat.beerChat.tooltip';
     toggledIcon = IconBeer;
-    tooltip = 'toolbar.security';
+    tooltip = 'chat.beerChat.tooltip';
 
     /**
      * Handles clicking / pressing the button, and opens / closes the appropriate dialog.
