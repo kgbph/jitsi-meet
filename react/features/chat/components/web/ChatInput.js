@@ -1,14 +1,12 @@
 // @flow
 
 import React, { Component } from 'react';
-import Emoji from 'react-emoji-render';
 import TextareaAutosize from 'react-textarea-autosize';
 import type { Dispatch } from 'redux';
 
 import { translate } from '../../../base/i18n';
 import { connect } from '../../../base/redux';
-
-import SmileysPanel from './SmileysPanel';
+import { BeerChatDialogButton } from './beer-chat-dialog';
 
 /**
  * The type of the React {@code Component} props of {@link ChatInput}.
@@ -46,11 +44,6 @@ type State = {
      * User provided nickname when the input text is provided in the view.
      */
     message: string,
-
-    /**
-     * Whether or not the smiley selector is visible.
-     */
-    showSmileysPanel: boolean
 };
 
 /**
@@ -63,7 +56,6 @@ class ChatInput extends Component<Props, State> {
 
     state = {
         message: '',
-        showSmileysPanel: false
     };
 
     /**
@@ -80,8 +72,6 @@ class ChatInput extends Component<Props, State> {
         // Bind event handlers so they are only bound once for every instance.
         this._onDetectSubmit = this._onDetectSubmit.bind(this);
         this._onMessageChange = this._onMessageChange.bind(this);
-        this._onSmileySelect = this._onSmileySelect.bind(this);
-        this._onToggleSmileysPanel = this._onToggleSmileysPanel.bind(this);
         this._setTextAreaRef = this._setTextAreaRef.bind(this);
     }
 
@@ -105,9 +95,6 @@ class ChatInput extends Component<Props, State> {
      * @returns {ReactElement}
      */
     render() {
-        const smileysPanelClassName = `${this.state.showSmileysPanel
-            ? 'show-smileys' : 'hide-smileys'} smileys-panel`;
-
         return (
             <div id = 'chat-input' >
                 <div className = 'usrmsg-form'>
@@ -120,6 +107,13 @@ class ChatInput extends Component<Props, State> {
                         onKeyDown = { this._onDetectSubmit }
                         placeholder = { this.props.t('chat.messagebox') }
                         value = { this.state.message } />
+                </div>
+                <div className = 'smiley-input'>
+                    <div id = 'smileysarea'>
+                        <div id = 'smileys'>
+                            <BeerChatDialogButton />
+                        </div>
+                    </div>
                 </div>
             </div>
         );
@@ -171,39 +165,6 @@ class ChatInput extends Component<Props, State> {
      */
     _onMessageChange(event) {
         this.setState({ message: event.target.value });
-    }
-
-    _onSmileySelect: (string) => void;
-
-    /**
-     * Appends a selected smileys to the chat message draft.
-     *
-     * @param {string} smileyText - The value of the smiley to append to the
-     * chat message.
-     * @private
-     * @returns {void}
-     */
-    _onSmileySelect(smileyText) {
-        this.setState({
-            message: `${this.state.message} ${smileyText}`,
-            showSmileysPanel: false
-        });
-
-        this._focus();
-    }
-
-    _onToggleSmileysPanel: () => void;
-
-    /**
-     * Callback invoked to hide or show the smileys selector.
-     *
-     * @private
-     * @returns {void}
-     */
-    _onToggleSmileysPanel() {
-        this.setState({ showSmileysPanel: !this.state.showSmileysPanel });
-
-        this._focus();
     }
 
     _setTextAreaRef: (?HTMLTextAreaElement) => void;

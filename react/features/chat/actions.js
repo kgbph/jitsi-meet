@@ -7,6 +7,8 @@ import {
     SET_PRIVATE_MESSAGE_RECIPIENT,
     TOGGLE_CHAT
 } from './actionTypes';
+import { openDialog } from '../base/dialog';
+import BeerChatDialog from './components/web/beer-chat-dialog/BeerChatDialog';
 
 /**
  * Adds a chat message to the collection of messages.
@@ -49,6 +51,18 @@ export function clearMessages() {
         type: CLEAR_MESSAGES
     };
 }
+
+/**
+ * Action that triggers opening the beer chat dialog.
+ *
+ * @returns {Function}
+ */
+export function openBeerChatDialog() {
+    return function(dispatch: (Object) => Object) {
+        dispatch(openDialog(BeerChatDialog));
+    };
+}
+
 
 /**
  * Sends a chat message to everyone in the conference.
