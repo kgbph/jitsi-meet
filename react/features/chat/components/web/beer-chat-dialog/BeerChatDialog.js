@@ -16,14 +16,19 @@ class BeerChatDialog extends React.Component {
         super(props);
         this._onAmountChange = this._onAmountChange.bind(this);
         this._onMessageChange = this._onMessageChange.bind(this);
+        this._onSubmit = this._onSubmit.bind(this);
     }
 
     _onAmountChange(amount) {
-        this.setState({ amount: amount })
+        this.setState({ amount: amount });
     }
 
     _onMessageChange(message) {
-        this.setState({ message: message })
+        this.setState({ message: message });
+    }
+
+    _onSubmit() {
+        alert('Submit!');
     }
 
     render() {
@@ -31,6 +36,7 @@ class BeerChatDialog extends React.Component {
             <Dialog
                 customHeader={Header}
                 disableEnter={true}
+                onSubmit={this._onSubmit}
                 width={'small'}>
                 <InputAmount
                     onChange={this._onAmountChange} />
