@@ -3,23 +3,13 @@
 import { translate } from '../../../../base/i18n';
 import { IconBeer } from '../../../../base/icons';
 import { connect } from '../../../../base/redux';
-import { AbstractButton, type AbstractButtonProps } from '../../../../base/toolbox';
+import { AbstractButton } from '../../../../base/toolbox';
 import { openBeerChatDialog } from '../../../actions';
 
-
-type Props = AbstractButtonProps & {
-
-    /**
-     * On click handler that opens the security dialog.
-     */
-    onClick: Function
-};
-
-
 /**
- * Implements an {@link AbstractButton} to open the security dialog.
+ * Implements an {@link AbstractButton} to open the beer chat dialog.
  */
-class BeerChatDialogButton extends AbstractButton<Props, *> {
+class BeerChatDialogButton extends AbstractButton {
     accessibilityLabel = 'toolbar.accessibilityLabel.security';
     icon = IconBeer;
     label = 'chat.beerChat.tooltip';
@@ -38,16 +28,6 @@ class BeerChatDialogButton extends AbstractButton<Props, *> {
 }
 
 /**
- * Maps part of the redux state to the component's props.
- *
- * @param {Object} state - The redux store/state.
- * @returns {Props}
- */
-function mapStateToProps(state: Object) {
-    return {};
-}
-
-/**
  * Maps dispatching of some action to React component props.
  *
  * @param {Function} dispatch - Redux action dispatcher.
@@ -57,4 +37,4 @@ const mapDispatchToProps = {
     onClick: () => openBeerChatDialog()
 };
 
-export default translate(connect(mapStateToProps, mapDispatchToProps)(BeerChatDialogButton));
+export default translate(connect(() => ({}), mapDispatchToProps)(BeerChatDialogButton));

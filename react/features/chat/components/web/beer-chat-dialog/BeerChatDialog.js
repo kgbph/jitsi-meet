@@ -7,14 +7,8 @@ import { translate } from '../../../../base/i18n';
 import { connect } from '../../../../base/redux';
 
 import Header from './Header';
-
-type Props = {
-
-    /**
-     * Invoked to obtain translated strings.
-     */
-    t: Function
-};
+import InputAmount from './InputAmount';
+import InputMessage from './InputMessage';
 
 /**
  * Component that renders the beer chat dialog.
@@ -26,13 +20,9 @@ function BeerChatDialog() {
     return (
         <Dialog
             customHeader = { Header }
-            hideCancelButton = { true }
-            submitDisabled = { true }
-            titleKey = 'security.securityOptions'
             width = { 'small' }>
-            <div>
-                Test
-            </div>
+            <InputAmount />
+            <InputMessage />
         </Dialog>
     );
 }

@@ -384,3 +384,61 @@
         }
     }
 }
+
+.beerchat {
+
+    &-amount {
+        text-align: right;
+
+        &-input {
+            background-color: #283447;
+            border-color: #202B3D;
+            border-radius: 3px;
+            border-style: solid;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #ffffff;
+            font-size: 15px;
+            margin: 10px;
+            padding: 5px;
+            text-align: right;
+        }
+    }
+
+    &-message {
+        border-top: 1px solid $chatInputSeparatorColor;
+        display: flex;
+        padding: 5px 10px;
+    
+        * {
+            background-color: transparent;
+        }
+
+        &-form {
+            flex: 1;
+        }
+
+        &-input {
+            border: 0px none;
+            border-radius:0;
+            box-shadow: none;
+            color: white;
+            font-size: 15px;
+            padding: 10px;
+            overflow-y: auto;
+            resize: none;
+            width: 100%;
+            word-break: break-word;
+
+            :hover {
+                border: 0px none;
+                box-shadow: none;
+            }
+
+            ::-webkit-scrollbar-track-piece {
+                background: #3a3a3a;
+            }
+        }
+    }
+}
+
