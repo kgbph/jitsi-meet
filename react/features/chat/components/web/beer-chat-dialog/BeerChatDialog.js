@@ -15,6 +15,7 @@ function BeerChatDialog() {
     return (
         <Dialog
             customHeader={Header}
+            disableEnter={true}
             width={'small'}>
             <InputAmount />
             <InputMessage />
