@@ -4,9 +4,6 @@ import { connect } from '../../../../base/redux';
 import { AbstractButton } from '../../../../base/toolbox';
 import { openBeerChatDialog } from '../../../actions';
 
-/**
- * Implements an {@link AbstractButton} to open the beer chat dialog.
- */
 class BeerChatDialogButton extends AbstractButton {
     accessibilityLabel = 'toolbar.accessibilityLabel.security';
     icon = IconBeer;
@@ -14,20 +11,11 @@ class BeerChatDialogButton extends AbstractButton {
     toggledIcon = IconBeer;
     tooltip = 'chat.beerChat.tooltip';
 
-    /**
-     * Handles clicking / pressing the button, and opens / closes the appropriate dialog.
-     *
-     * @protected
-     * @returns {void}
-     */
     _handleClick() {
         this.props.onClick();
     }
 }
 
-/**
- * Maps dispatching of some action to React component props.
- */
 const mapDispatchToProps = {
     onClick: () => openBeerChatDialog()
 };

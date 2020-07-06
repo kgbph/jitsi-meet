@@ -1,38 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
-
 import { translate } from '../../../../base/i18n';
 import { connect } from '../../../../base/redux';
 
-/**
- * Implements a React Component for submitting a beer chat message
- *
- * @extends Component
- */
-class InputMessage extends Component {
-    state = {
-        message: '',
-    };
-
-    /**
-     * Initializes a new {@code InputMessage} instance.
-     *
-     * @param {Object} props - The read-only properties with which the new
-     * instance is to be initialized.
-     */
+class InputMessage extends React.Component {
     constructor(props) {
         super(props);
-
-        // Bind event handlers so they are only bound once for every instance.
-        this._onMessageChange = this._onMessageChange.bind(this);
+        this._onChange = this._onChange.bind(this);
     }
 
-    /**
-     * Implements React's {@link Component#render()}.
-     *
-     * @inheritdoc
-     * @returns {ReactElement}
-     */
+    _onChange(event) {
+        this.props.onChange(event.target.value);
+    }
+
     render() {
         return (
             <div className='beerchat-message'>
@@ -40,23 +20,12 @@ class InputMessage extends Component {
                     <TextareaAutosize
                         className='beerchat-message-input'
                         maxRows={5}
-                        onChange={this._onMessageChange}
+                        onChange={this._onChange}
                         placeholder={this.props.t('chat.beerChat.input.placeholder')}
-                        value={this.state.message} />
+                        value={this.props.message} />
                 </div>
             </div>
         );
-    }
-
-    /**
-     * Updates the known message the user is drafting.
-     *
-     * @param {string} event - Keyboard event.
-     * @private
-     * @returns {void}
-     */
-    _onMessageChange(event) {
-        this.setState({ message: event.target.value });
     }
 }
 
