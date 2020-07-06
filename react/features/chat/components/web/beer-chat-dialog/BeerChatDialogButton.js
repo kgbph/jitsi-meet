@@ -1,5 +1,3 @@
-// @flow
-
 import { translate } from '../../../../base/i18n';
 import { IconBeer } from '../../../../base/icons';
 import { connect } from '../../../../base/redux';
@@ -19,7 +17,7 @@ class BeerChatDialogButton extends AbstractButton {
     /**
      * Handles clicking / pressing the button, and opens / closes the appropriate dialog.
      *
-     * @private
+     * @protected
      * @returns {void}
      */
     _handleClick() {
@@ -29,9 +27,6 @@ class BeerChatDialogButton extends AbstractButton {
 
 /**
  * Maps dispatching of some action to React component props.
- *
- * @param {Function} dispatch - Redux action dispatcher.
- * @returns {Props}
  */
 const mapDispatchToProps = {
     onClick: () => openBeerChatDialog()

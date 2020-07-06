@@ -1,6 +1,5 @@
-// @flow
-
 import React, { Component } from 'react';
+import CurrencyInput from 'react-currency-input';
 
 import { translate } from '../../../../base/i18n';
 import { connect } from '../../../../base/redux';
@@ -12,7 +11,7 @@ import { connect } from '../../../../base/redux';
  */
 class InputAmount extends Component {
     state = {
-        amount: 0,
+        amount: 0.00,
     };
 
     /**
@@ -38,13 +37,14 @@ class InputAmount extends Component {
         return (
             <div className='beerchat-amount'>
                 <label>{this.props.t('chat.beerChat.amount.label')}</label>
-                <input
+                <CurrencyInput
+                    autoFocus
                     className='beerchat-amount-input'
-                    id='beerchat-amount'
+                    prefix='$'
+                    selectAllOnFocus={true}
                     value={this.state.amount}
-                    onChange={this._onAmountChange}
-                    autoFocus />
-                <label>{this.props.t('chat.beerChat.amount.currency')}</label>
+                    onChangeEvent={this._onAmountChange}
+                />
             </div>
         );
     }
@@ -53,11 +53,13 @@ class InputAmount extends Component {
      * Updates the known amount the user is drafting.
      *
      * @param {string} event - Keyboard event.
+     * @param {string} maskedvalue - Masked value.
+     * @param {string} floatvalue - Float value.
      * @private
      * @returns {void}
      */
-    _onAmountChange(event) {
-        this.setState({ amount: event.target.value.replace(/\D/,'') })
+    _onAmountChange(event, maskedvalue, floatvalue) {
+        this.setState({ amount: floatvalue })
     }
 }
 

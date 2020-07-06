@@ -1,7 +1,4 @@
-// @flow
-
-import React, {  } from 'react';
-
+import React from 'react';
 import { Dialog } from '../../../../base/dialog';
 import { translate } from '../../../../base/i18n';
 import { connect } from '../../../../base/redux';
@@ -12,15 +9,13 @@ import InputMessage from './InputMessage';
 
 /**
  * Component that renders the beer chat dialog.
- *
- * @returns {React$Element<any>}
  */
 function BeerChatDialog() {
 
     return (
         <Dialog
-            customHeader = { Header }
-            width = { 'small' }>
+            customHeader={Header}
+            width={'small'}>
             <InputAmount />
             <InputMessage />
         </Dialog>

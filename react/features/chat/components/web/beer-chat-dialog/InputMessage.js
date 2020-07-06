@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Component } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 
@@ -12,7 +10,6 @@ import { connect } from '../../../../base/redux';
  * @extends Component
  */
 class InputMessage extends Component {
-
     state = {
         message: '',
     };
@@ -38,14 +35,14 @@ class InputMessage extends Component {
      */
     render() {
         return (
-            <div className = 'beerchat-message' >
-                <div className = 'beerchat-message-form'>
+            <div className='beerchat-message'>
+                <div className='beerchat-message-form'>
                     <TextareaAutosize
-                        className = 'beerchat-message-input'
-                        maxRows = { 5 }
-                        onChange = { this._onMessageChange }
-                        placeholder = { this.props.t('chat.beerChat.input.placeholder') }
-                        value = { this.state.message } />
+                        className='beerchat-message-input'
+                        maxRows={5}
+                        onChange={this._onMessageChange}
+                        placeholder={this.props.t('chat.beerChat.input.placeholder')}
+                        value={this.state.message} />
                 </div>
             </div>
         );
