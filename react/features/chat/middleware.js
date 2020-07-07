@@ -20,7 +20,7 @@ import { MiddlewareRegistry, StateListenerRegistry } from '../base/redux';
 import { playSound, registerSound, unregisterSound } from '../base/sounds';
 import { isButtonEnabled, showToolbox } from '../toolbox';
 
-import { SEND_MESSAGE, SET_PRIVATE_MESSAGE_RECIPIENT } from './actionTypes';
+import { SEND_MESSAGE, SET_PRIVATE_MESSAGE_RECIPIENT, SEND_BEER_CHAT } from './actionTypes';
 import { addMessage, clearMessages, toggleChat } from './actions';
 import { ChatPrivacyDialog } from './components';
 import {
@@ -96,6 +96,20 @@ MiddlewareRegistry.register(store => next => action => {
                     conference.sendTextMessage(action.message);
                 }
             }
+        }
+        break;
+    }
+
+    case SEND_BEER_CHAT: {
+        const state = store.getState();
+        const { conference } = state['features/base/conference'];
+
+        if (conference) {
+            if (typeof APP !== 'undefined') {
+                APP.API.notifySendingChatMessage(action.message, false);
+            }
+
+            conference.sendBeerChat(action.amount, action.message);
         }
         break;
     }

@@ -5,6 +5,7 @@ import {
     CLEAR_MESSAGES,
     SEND_MESSAGE,
     SET_PRIVATE_MESSAGE_RECIPIENT,
+    SEND_BEER_CHAT,
     TOGGLE_CHAT
 } from './actionTypes';
 import { openDialog } from '../base/dialog';
@@ -63,7 +64,6 @@ export function openBeerChatDialog() {
     };
 }
 
-
 /**
  * Sends a chat message to everyone in the conference.
  *
@@ -79,6 +79,25 @@ export function sendMessage(message: string, ignorePrivacy: boolean = false) {
     return {
         type: SEND_MESSAGE,
         ignorePrivacy,
+        message
+    };
+}
+
+/**
+ * Sends a beer chat to everyone in the conference
+ *
+ * @param {number} amount - The beer chat amount
+ * @param {string} message - The beer chat message
+ * @returns {{
+ *     type: SEND_BEER_CHAT,
+ *     amount: number,
+ *     message: string
+ * }}
+ */
+export function sendBeerChat(amount, message) {
+    return {
+        type: SEND_BEER_CHAT,
+        amount,
         message
     };
 }

@@ -37,6 +37,17 @@ export const CLEAR_MESSAGES = 'CLEAR_MESSAGES';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 
 /**
+ * The type of action which signals beer chat sending
+ *
+ * {
+ *     type: SEND_BEER_CHAT
+ *     amount: number,
+ *     message: string
+ * }
+ */
+export const SEND_BEER_CHAT = 'SEND_BEER_CHAT';
+
+/**
  * The type of action which signals the initiation of sending of as private message to the
  * supplied recipient.
  *
