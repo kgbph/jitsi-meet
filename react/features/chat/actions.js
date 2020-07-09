@@ -19,6 +19,7 @@ import BeerChatDialog from './components/web/beer-chat-dialog/BeerChatDialog';
  * participant that authored the message.
  * @param {boolean} messageDetails.hasRead - Whether or not to immediately mark
  * the message as read.
+ * @param {number} messageDetails.amount - The received amount from beer chat.
  * @param {string} messageDetails.message - The received message to display.
  * @param {string} messageDetails.messageType - The kind of message, such as
  * "error" or "local" or "remote".
@@ -28,6 +29,7 @@ import BeerChatDialog from './components/web/beer-chat-dialog/BeerChatDialog';
  *     type: ADD_MESSAGE,
  *     displayName: string,
  *     hasRead: boolean,
+ *     amount: number,
  *     message: string,
  *     messageType: string,
  *     timestamp: string,

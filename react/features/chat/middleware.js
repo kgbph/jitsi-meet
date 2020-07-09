@@ -179,6 +179,21 @@ function _addChatMsgListener(conference, store) {
         (id, message, timestamp, nick) => {
             _handleReceivedMessage(store, {
                 id,
+                amount: 0,
+                message,
+                nick,
+                privateMessage: false,
+                timestamp
+            });
+        }
+    );
+
+    conference.on(
+        JitsiConferenceEvents.BEER_CHAT_RECEIVED,
+        (id, amount, message, timestamp, nick) => {
+            _handleReceivedMessage(store, {
+                id,
+                amount,
                 message,
                 nick,
                 privateMessage: false,
@@ -192,6 +207,7 @@ function _addChatMsgListener(conference, store) {
         (id, message, timestamp) => {
             _handleReceivedMessage(store, {
                 id,
+                amount: 0,
                 message,
                 privateMessage: true,
                 timestamp,
@@ -230,7 +246,7 @@ function _handleChatError({ dispatch }, error) {
  * @param {Object} message - The message object.
  * @returns {void}
  */
-function _handleReceivedMessage({ dispatch, getState }, { id, message, nick, privateMessage, timestamp }) {
+function _handleReceivedMessage({ dispatch, getState }, { id, amount, message, nick, privateMessage, timestamp }) {
     // Logic for all platforms:
     const state = getState();
     const { isOpen: isChatOpen } = state['features/chat'];
@@ -254,6 +270,7 @@ function _handleReceivedMessage({ dispatch, getState }, { id, message, nick, pri
         hasRead,
         id,
         messageType: participant.local ? MESSAGE_TYPE_LOCAL : MESSAGE_TYPE_REMOTE,
+        amount,
         message,
         privateMessage,
         recipient: getParticipantDisplayName(state, localParticipant.id),
