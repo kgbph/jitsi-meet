@@ -62,15 +62,16 @@
     },
     "chat": {
         "beerChat": {
-            "tooltip": "Send them a beer!",
-            "title": "Send beer chat",
             "amount": {
                 "label": "Amount",
                 "currency": "$"
             },
             "input": {
                 "placeholder": "Type a message"
-            }
+            },
+            "notification": "{{sender}} sent a beer!",
+            "title": "Send beer chat",
+            "tooltip": "Send them a beer!"
         },
         "error": "Error: your message was not sent. Reason: {{error}}",
         "fieldPlaceHolder": "Type your message here",

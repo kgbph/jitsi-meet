@@ -3,9 +3,7 @@ import { toArray } from 'react-emoji-render';
 
 import { translate } from '../../../../base/i18n';
 import { Linkify } from '../../../../base/react';
-import { MESSAGE_TYPE_LOCAL } from '../../../constants';
 import AbstractChatMessage from '../../AbstractChatMessage';
-import PrivateMessageButton from '../../PrivateMessageButton';
 
 /**
  * Renders a single beer chat message.
@@ -33,54 +31,25 @@ class BeerChatMessage extends AbstractChatMessage {
         });
 
         return (
-            <div className='chatmessage-wrapper'>
-                <div className={`chatmessage ${message.privateMessage ? 'privatemessage' : ''}`}>
+            <div className='chatmessage-wrapper premiummessage'>
+                <div className='chatmessage premiummessage'>
                     <div className='replywrapper'>
                         <div className='messagecontent'>
-                            {this.props.showDisplayName && this._renderDisplayName()}
+                            <div className='beerchat-notification'>
+                                {this.props.t('chat.beerChat.notification', {
+                                    sender: message.displayName
+                                })}
+                            </div>
+                            <div className='beerchat-notification'>
+                                $ {Number(message.amount).toFixed(2)}
+                            </div>
                             <div className='usermessage'>
                                 {processedMessage}
                             </div>
-                            {message.privateMessage && this._renderPrivateNotice()}
                         </div>
-                        {message.privateMessage && message.messageType !== MESSAGE_TYPE_LOCAL
-                            && (
-                                <div className='messageactions'>
-                                    <PrivateMessageButton
-                                        participantID={message.id}
-                                        reply={true}
-                                        showLabel={false} />
-                                </div>
-                            )}
                     </div>
                 </div>
                 {this.props.showTimestamp && this._renderTimestamp()}
-            </div>
-        );
-    }
-
-    /**
-     * Renders the display name of the sender.
-     *
-     * @returns {React$Element<*>}
-     */
-    _renderDisplayName() {
-        return (
-            <div className='display-name'>
-                {this.props.message.displayName}
-            </div>
-        );
-    }
-
-    /**
-     * Renders the message privacy notice.
-     *
-     * @returns {React$Element<*>}
-     */
-    _renderPrivateNotice() {
-        return (
-            <div className='privatemessagenotice'>
-                {this._getPrivateNoticeMessage()}
             </div>
         );
     }

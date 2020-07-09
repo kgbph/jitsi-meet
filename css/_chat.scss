@@ -370,6 +370,10 @@
                 }
             }
         }
+
+        &.premiummessage {
+            width: 100%;
+        }
     }
 
     .chatmessage {
@@ -381,6 +385,12 @@
 
         &.privatemessage {
             background-color: $chatPrivateMessageBackgroundColor;
+        }
+
+        &.premiummessage {
+            background-color: $chatPremiumMessageBackgroundColor;
+            border-radius: 6px;
+            width: 100%;
         }
     }
 }
@@ -440,5 +450,9 @@
             }
         }
     }
-}
 
+    &-notification {
+        color: #000000;
+        font-weight: 600;
+    }
+}
