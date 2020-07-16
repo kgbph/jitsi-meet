@@ -58,6 +58,7 @@ body.welcome-page {
         #enter_room {
             display: flex;
             align-items: center;
+            justify-content: center;
             max-width: calc(100% - 40px);
             width: $welcomePageEnterRoomWidth;
             z-index: $zindex2;
@@ -164,14 +165,14 @@ body.welcome-page {
     }
 
     .welcome-page-button {
-        width: $welcomePageButtonWidth;
-        min-width: $welcomePageButtonMinWidth;
+        max-width: $welcomePageButtonMaxWidth;
         height: $welcomePageButtonHeight;
         font-size: $welcomePageButtonFontSize;
         font-weight: $welcomePageButtonFontWeight;
         background: #EE2D3D;
         border-radius: $welcomePageButtonBorderRadius;
         color: #FFFFFF;
+        flex: auto;
         text-align: center;
         vertical-align: middle;
         line-height: $welcomePageButtonLineHeight;

@@ -194,34 +194,11 @@ class WelcomePage extends AbstractWelcomePage {
                         </p>
                     </div>
                     <div id = 'enter_room'>
-                        <div className = 'enter-room-input-container'>
-                            <div className = 'enter-room-title'>
-                                { t('welcomepage.enterRoomTitle') }
-                            </div>
-                            <form onSubmit = { this._onFormSubmit }>
-                                <input
-                                    autoFocus = { true }
-                                    className = 'enter-room-input'
-                                    id = 'enter_room_field'
-                                    onChange = { this._onRoomChange }
-                                    pattern = { ROOM_NAME_VALIDATE_PATTERN_STR }
-                                    placeholder = { this.state.roomPlaceholder }
-                                    ref = { this._setRoomInputRef }
-                                    title = { t('welcomepage.roomNameAllowedChars') }
-                                    type = 'text'
-                                    value = { this.state.room } />
-                                { this._renderInsecureRoomNameWarning() }
-                            </form>
-                        </div>
                         <div
                             className = 'welcome-page-button'
                             id = 'enter_room_button'
                             onClick = { this._onFormSubmit }>
-                            {
-                                showResponsiveText
-                                    ? t('welcomepage.goSmall')
-                                    : t('welcomepage.go')
-                            }
+                            { t('welcomepage.enterRoomTitle') }
                         </div>
                     </div>
                     { this._renderTabs() }
@@ -261,9 +238,16 @@ class WelcomePage extends AbstractWelcomePage {
     _onFormSubmit(event) {
         event.preventDefault();
 
-        if (!this._roomInputRef || this._roomInputRef.reportValidity()) {
-            this._onJoin();
-        }
+        const generatedRoomName = ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+            (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+        );
+
+        this.setState({
+            room: generatedRoomName,
+            insecureRoomName: this.props._enableInsecureRoomNameWarning
+                && generatedRoomName
+                && isInsecureRoomName(generatedRoomName)
+        }, this._onJoin);
     }
 
     /**
