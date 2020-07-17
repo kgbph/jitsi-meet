@@ -91,6 +91,9 @@
         "buttonText": "Install Chrome Extension",
         "dontShowAgain": "Don’t show me this again"
     },
+    "conference": {
+        "title": "Conference"
+    },
     "connectingOverlay": {
         "joiningRoom": "Connecting you to your meeting..."
     },
