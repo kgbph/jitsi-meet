@@ -1,7 +1,7 @@
 import React from 'react';
 import CurrencyInput from 'react-currency-input';
-import { translate } from '../../../../base/i18n';
-import { connect } from '../../../../base/redux';
+import { translate } from '../../../base/i18n';
+import { connect } from '../../../base/redux';
 
 class InputAmount extends React.Component {
     constructor(props) {
@@ -15,12 +15,12 @@ class InputAmount extends React.Component {
 
     render() {
         return (
-            <div className='beerchat-amount'>
-                <label>{this.props.t('chat.beerChat.amount.label')}</label>
+            <div className='premiumchat-amount'>
+                <label>{this.props.t('chat.premium.amountLabel')}</label>
                 <CurrencyInput
                     autoFocus
-                    className='beerchat-amount-input'
-                    prefix='$'
+                    className='premiumchat-amount-input'
+                    prefix={this.props.t('chat.premium.amountSuffix')}
                     selectAllOnFocus={true}
                     value={this.props.amount}
                     onChangeEvent={this._onChange}

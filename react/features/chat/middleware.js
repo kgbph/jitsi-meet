@@ -20,7 +20,7 @@ import { MiddlewareRegistry, StateListenerRegistry } from '../base/redux';
 import { playSound, registerSound, unregisterSound } from '../base/sounds';
 import { isButtonEnabled, showToolbox } from '../toolbox';
 
-import { SEND_MESSAGE, SET_PRIVATE_MESSAGE_RECIPIENT, SEND_BEER_CHAT } from './actionTypes';
+import { SEND_MESSAGE, SET_PRIVATE_MESSAGE_RECIPIENT, SEND_PREMIUM_MESSAGE } from './actionTypes';
 import { addMessage, clearMessages, toggleChat } from './actions';
 import { ChatPrivacyDialog } from './components';
 import {
@@ -100,7 +100,7 @@ MiddlewareRegistry.register(store => next => action => {
         break;
     }
 
-    case SEND_BEER_CHAT: {
+    case SEND_PREMIUM_MESSAGE: {
         const state = store.getState();
         const { conference } = state['features/base/conference'];
 
@@ -109,7 +109,7 @@ MiddlewareRegistry.register(store => next => action => {
                 APP.API.notifySendingChatMessage(action.message, false);
             }
 
-            conference.sendBeerChat(action.amount, action.message);
+            conference.sendPremiumTextMessage(action.amount, action.message);
         }
         break;
     }
@@ -189,7 +189,7 @@ function _addChatMsgListener(conference, store) {
     );
 
     conference.on(
-        JitsiConferenceEvents.BEER_CHAT_RECEIVED,
+        JitsiConferenceEvents.PREMIUM_MESSAGE_RECEIVED,
         (id, amount, message, timestamp, nick) => {
             _handleReceivedMessage(store, {
                 id,

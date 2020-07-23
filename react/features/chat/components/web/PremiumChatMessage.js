@@ -1,14 +1,15 @@
 import React from 'react';
 import { toArray } from 'react-emoji-render';
 
-import { translate } from '../../../../base/i18n';
-import { Linkify } from '../../../../base/react';
-import AbstractChatMessage from '../../AbstractChatMessage';
+import { translate } from '../../../base/i18n';
+import { Linkify } from '../../../base/react';
+
+import AbstractChatMessage from '../AbstractChatMessage';
 
 /**
- * Renders a single beer chat message.
+ * Renders a single premium chat message.
  */
-class BeerChatMessage extends AbstractChatMessage {
+class PremiumChatMessage extends AbstractChatMessage {
     /**
      * Implements React's {@link Component#render()}.
      *
@@ -35,13 +36,13 @@ class BeerChatMessage extends AbstractChatMessage {
                 <div className='chatmessage premiummessage'>
                     <div className='replywrapper'>
                         <div className='messagecontent'>
-                            <div className='beerchat-notification'>
-                                {this.props.t('chat.beerChat.notification', {
+                            <div className='premium-notification'>
+                                {this.props.t('chat.premium.notification', {
                                     sender: message.displayName
                                 })}
                             </div>
-                            <div className='beerchat-notification'>
-                                $ {Number(message.amount).toFixed(2)}
+                            <div className='premium-notification'>
+                                {this.props.t('chat.premium.amountSuffix')} {Number(message.amount).toFixed(2)}
                             </div>
                             <div className='usermessage'>
                                 {processedMessage}
@@ -68,4 +69,4 @@ class BeerChatMessage extends AbstractChatMessage {
     }
 }
 
-export default translate(BeerChatMessage);
+export default translate(PremiumChatMessage);

@@ -1,7 +1,7 @@
 import React from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
-import { translate } from '../../../../base/i18n';
-import { connect } from '../../../../base/redux';
+import { translate } from '../../../base/i18n';
+import { connect } from '../../../base/redux';
 
 class InputMessage extends React.Component {
     constructor(props) {
@@ -15,13 +15,13 @@ class InputMessage extends React.Component {
 
     render() {
         return (
-            <div className='beerchat-message'>
-                <div className='beerchat-message-form'>
+            <div className='premiumchat-message'>
+                <div className='premiumchat-message-form'>
                     <TextareaAutosize
-                        className='beerchat-message-input'
+                        className='premiumchat-message-input'
                         maxRows={5}
                         onChange={this._onChange}
-                        placeholder={this.props.t('chat.beerChat.input.placeholder')}
+                        placeholder={this.props.t('chat.premium.inputPlaceholder')}
                         value={this.props.message} />
                 </div>
             </div>

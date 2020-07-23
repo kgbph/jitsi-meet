@@ -1,15 +1,15 @@
 import React from 'react';
 
-import { sendBeerChat } from '../../../actions';
-import { Dialog } from '../../../../base/dialog';
-import { translate } from '../../../../base/i18n';
-import { connect } from '../../../../base/redux';
+import { sendPremiumMessage } from '../../actions';
+import { Dialog } from '../../../base/dialog';
+import { translate } from '../../../base/i18n';
+import { connect } from '../../../base/redux';
 
 import Header from './Header';
 import InputAmount from './InputAmount';
 import InputMessage from './InputMessage';
 
-class BeerChatDialog extends React.Component {
+class PremiumChatDialog extends React.Component {
     state = {
         amount: 0.00,
         message: ''
@@ -57,9 +57,9 @@ class BeerChatDialog extends React.Component {
 function mapDispatchToProps(dispatch) {
     return {
         _onSubmit(amount, message) {
-            dispatch(sendBeerChat(amount, message));
+            dispatch(sendPremiumMessage(amount, message));
         }
     };
 };
 
-export default translate(connect(() => ({}), mapDispatchToProps)(BeerChatDialog));
+export default translate(connect(() => ({}), mapDispatchToProps)(PremiumChatDialog));

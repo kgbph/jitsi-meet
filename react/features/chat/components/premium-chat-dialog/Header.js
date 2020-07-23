@@ -1,12 +1,12 @@
 import React from 'react';
-import { translate } from '../../../../base/i18n';
-import { Icon, IconClose } from '../../../../base/icons';
+import { translate } from '../../../base/i18n';
+import { Icon, IconClose } from '../../../base/icons';
 
 function Header({ onClose, t }) {
     return (
         <div
             className='invite-more-dialog header'>
-            {t('chat.beerChat.title')}
+            {t('chat.premium.title')}
             <Icon
                 onClick={onClose}
                 src={IconClose} />

@@ -61,18 +61,6 @@
         "today": "Today"
     },
     "chat": {
-        "beerChat": {
-            "amount": {
-                "label": "Amount",
-                "currency": "$"
-            },
-            "input": {
-                "placeholder": "Type a message"
-            },
-            "notification": "{{sender}} sent a beer!",
-            "title": "Send beer chat",
-            "tooltip": "Send them a beer!"
-        },
         "error": "Error: your message was not sent. Reason: {{error}}",
         "fieldPlaceHolder": "Type your message here",
         "messagebox": "Type a message",
@@ -81,6 +69,13 @@
         "nickname": {
             "popover": "Choose a nickname",
             "title": "Enter a nickname to use chat"
+        },
+        "premium": {
+            "amountLabel": "Amount",
+            "amountSuffix": "$",
+            "notification": "{{sender}} sent a premium chat!",
+            "inputPlaceholder": "Type a message",
+            "title": "Send premium chat"
         },
         "privateNotice": "Private message to {{recipient}}",
         "title": "Chat",

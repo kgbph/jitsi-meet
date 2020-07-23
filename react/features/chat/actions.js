@@ -5,11 +5,11 @@ import {
     CLEAR_MESSAGES,
     SEND_MESSAGE,
     SET_PRIVATE_MESSAGE_RECIPIENT,
-    SEND_BEER_CHAT,
+    SEND_PREMIUM_MESSAGE,
     TOGGLE_CHAT
 } from './actionTypes';
 import { openDialog } from '../base/dialog';
-import BeerChatDialog from './components/web/beer-chat-dialog/BeerChatDialog';
+import { PremiumChatDialog } from './components/premium-chat-dialog';
 
 /**
  * Adds a chat message to the collection of messages.
@@ -19,7 +19,7 @@ import BeerChatDialog from './components/web/beer-chat-dialog/BeerChatDialog';
  * participant that authored the message.
  * @param {boolean} messageDetails.hasRead - Whether or not to immediately mark
  * the message as read.
- * @param {number} messageDetails.amount - The received amount from beer chat.
+ * @param {number} messageDetails.amount - The received amount from premium chat.
  * @param {string} messageDetails.message - The received message to display.
  * @param {string} messageDetails.messageType - The kind of message, such as
  * "error" or "local" or "remote".
@@ -56,13 +56,13 @@ export function clearMessages() {
 }
 
 /**
- * Action that triggers opening the beer chat dialog.
+ * Action that triggers opening the premium chat dialog.
  *
  * @returns {Function}
  */
-export function openBeerChatDialog() {
-    return function(dispatch: (Object) => Object) {
-        dispatch(openDialog(BeerChatDialog));
+export function openPremiumChatDialog() {
+    return function (dispatch: (Object) => Object) {
+        dispatch(openDialog(PremiumChatDialog));
     };
 }
 
@@ -86,19 +86,19 @@ export function sendMessage(message: string, ignorePrivacy: boolean = false) {
 }
 
 /**
- * Sends a beer chat to everyone in the conference
+ * Sends a premium chat message to everyone in the conference
  *
- * @param {number} amount - The beer chat amount
- * @param {string} message - The beer chat message
+ * @param {number} amount - The premium chat amount
+ * @param {string} message - The premium chat message
  * @returns {{
- *     type: SEND_BEER_CHAT,
+ *     type: SEND_PREMIUM_MESSAGE,
  *     amount: number,
  *     message: string
  * }}
  */
-export function sendBeerChat(amount, message) {
+export function sendPremiumMessage(amount, message) {
     return {
-        type: SEND_BEER_CHAT,
+        type: SEND_PREMIUM_MESSAGE,
         amount,
         message
     };

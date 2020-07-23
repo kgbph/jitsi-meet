@@ -37,15 +37,16 @@ export const CLEAR_MESSAGES = 'CLEAR_MESSAGES';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 
 /**
- * The type of action which signals beer chat sending
+ * The type of action which signals a send a premium chat message to everyone in the
+ * conference.
  *
  * {
- *     type: SEND_BEER_CHAT
+ *     type: SEND_PREMIUM_MESSAGE
  *     amount: number,
  *     message: string
  * }
  */
-export const SEND_BEER_CHAT = 'SEND_BEER_CHAT';
+export const SEND_PREMIUM_MESSAGE = 'SEND_PREMIUM_MESSAGE';
 
 /**
  * The type of action which signals the initiation of sending of as private message to the

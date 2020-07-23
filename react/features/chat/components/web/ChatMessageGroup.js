@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 
 import ChatMessage from './ChatMessage';
-import BeerChatMessage from './beer-chat/BeerChatMessage';
+import PremiumChatMessage from './PremiumChatMessage';
 
 type Props = {
 
@@ -48,7 +48,7 @@ class ChatMessageGroup extends Component<Props> {
                 {
                     messages.map((message, i) => (
                         message.amount
-                            ? <BeerChatMessage
+                            ? <PremiumChatMessage
                                 key={i}
                                 message={message}
                                 showDisplayName={i === 0}
